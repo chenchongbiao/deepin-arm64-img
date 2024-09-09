@@ -12,7 +12,7 @@ ROOTFS=`mktemp -d`
 TARGET_ARCH=arm64
 COMPONENTS="main,commercial,community"
 DISKSIZE="2048"
-DISKIMG="deepin-arm64.raw"
+DISKIMG="deepin-arm64.img"
 DISTRO_NAME="beige"
 readarray -t REPOS < ./profiles/sources.list
 PACKAGES=`cat ./profiles/packages.list | grep -v "^-" | xargs | sed -e 's/ /,/g'`
@@ -20,9 +20,9 @@ EFI_UUID="D77D4BBF"
 ROOT_UUID="9e8ff63f-443a-4886-97fe-2d46e36a6270"
 
 # 需要安装以下环境
-# sudo apt install -y curl git mmdebstrap qemu-user-static usrmerge usr-is-merged binfmt-support systemd-container
+sudo apt install -y mmdebstrap qemu-user-static usrmerge usr-is-merged binfmt-support systemd-container
 # 开启异架构支持
-# sudo systemctl start systemd-binfmt
+sudo systemctl start systemd-binfmt
 
 # 生成 img
 # 创建一个空白的镜像文件。
